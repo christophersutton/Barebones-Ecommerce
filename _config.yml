@@ -1,0 +1,26 @@
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+title: "Ecom Shell" # the name of your site, e.g. ACME Corp.
+nav: [{"href":"/shop","text":"shop"},{"href":"/about","text":"about"},{"href":"/cart","text":"cart"}]
+
+plugins:
+  - jekyll-datapage-generator
+
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"
+
+page_gen-dirs: false
+
+page_gen:
+- data: products
+  template: product-page
+  dir: products
+  name: title
+  title: title
+  filter: available
+  
+  

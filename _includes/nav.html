@@ -1,0 +1,12 @@
+<nav class="container">
+    <ul>
+        <li class="logo"><a href=
+            "/"><img src="logo.png"></a></li>
+        {% for item in site.nav %}
+            <li>
+                <a href="{{item.href}}">{{item.text}}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

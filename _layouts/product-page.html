@@ -1,0 +1,35 @@
+---
+title: "Happy Jekylling!"
+---
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+    {% include head.html %}
+    <body>
+        {% include nav.html %}
+        <div class="container">
+            <div class="row">
+                <div class="one-half column">
+                    <div class="gallery">
+                        <img src="foo.png">
+                    </div>
+                </div>
+                <div class="one-half column">
+                    <h2>{{page.title}}</h2>
+                    <p>{{page.price}}</p>
+                    <button class="button-primary">Buy Now</button>
+                    <ul class="features">
+                        <li>Feature 1</li>
+                        <li>Feature 2</li>
+                        <li>Feature 3</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% include footer.html %}
+    </body>
+</html>
+
+
+
+
+
