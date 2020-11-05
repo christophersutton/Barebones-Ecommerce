@@ -16,7 +16,7 @@ title: "Happy Jekylling!"
                 <div class="one-half column">
                     <h2>{{page.title}}</h2>
                     <p>{{page.price}}</p>
-                    <button class="button-primary">Buy Now</button>
+                    <button id="addToCart" class="button-primary" data-price="{{page.price}}" data-item="{{page.title}}">Buy Now</button>
                     <ul class="features">
                         <li>Feature 1</li>
                         <li>Feature 2</li>
@@ -26,6 +26,7 @@ title: "Happy Jekylling!"
             </div>
         </div>
         {% include footer.html %}
+        {% include cart.html %}
     </body>
 </html>
 

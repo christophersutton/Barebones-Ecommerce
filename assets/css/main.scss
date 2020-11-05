@@ -29,3 +29,22 @@ nav ul {
         margin:2rem;
     }
 }
+
+#cart {
+    display:none;
+    height:100vh;
+    position:fixed;
+    top:0;
+    right:0;
+    z-index:1;
+    background-color:green;
+}
+
+#cart.show {
+    display:block;
+}
+
+#cart div {
+    display:flex;
+    justify-content:space-between;
+}
