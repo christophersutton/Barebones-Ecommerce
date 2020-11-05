@@ -31,17 +31,23 @@ nav ul {
 }
 
 #cart {
-    display:none;
     height:100vh;
+    width:0;
+    opacity: 0;
     position:fixed;
     top:0;
     right:0;
-    z-index:1;
+    z-index:-1;
     background-color:green;
+    transition: 300ms;
+    padding:3%;
 }
 
 #cart.show {
-    display:block;
+    min-width:400px;
+    width:30%;
+    opacity:1;
+    z-index:1;
 }
 
 #cart div {
