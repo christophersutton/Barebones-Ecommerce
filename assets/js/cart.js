@@ -22,7 +22,13 @@ const cart = {
 
     paint : function(items) {  
         cart.itemsHTML.innerHTML = items.map((item, i) => {
-        return `<li>${item.item}</li>`;}).join('');
+            return `<div>
+                        ${item.item}
+                        <a href="#" class="deleteItem" data-id="${i}">Delete</a>
+                    </div>`;}
+            ).join('');
+        const removeItemBtns = document.querySelectorAll('.deleteItem');
+        removeItemBtns.forEach(b=>b.addEventListener('click',cart.removeItem));
     },
 
     addItem : function(e) {
@@ -36,7 +42,12 @@ const cart = {
         cart.paint(cart.items);
         cart.html.classList.add('show');    
     },
-
+    removeItem : function(e) {
+        console.log(e.target.dataset.id);
+        cart.items.splice(e.target.dataset.id,1)
+        localStorage.setItem('cartItems',JSON.stringify(cart.items));
+        cart.paint(cart.items);
+    },
     clear : function(){
         cart.items.splice(0,cart.items.length);
         localStorage.setItem('cartItems',JSON.stringify(cart.items));
@@ -51,3 +62,4 @@ cart.openBtn.addEventListener('click',cart.open);
 cart.closeBtn.addEventListener('click', cart.close);
 cart.addItemBtn.addEventListener('click',cart.addItem);
 cart.clearBtn.addEventListener('click',cart.clear);
+//cart.paint.removeItemBtns.addEventListener('click',cart.removeItem);
