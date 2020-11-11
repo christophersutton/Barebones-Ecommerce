@@ -38,18 +38,18 @@ const cart = {
             price : e.target.dataset.price
         };
         cart.items.push(item);
-        localStorage.setItem('cartItems',JSON.stringify(cart.items));
-        cart.paint(cart.items);
-        cart.html.classList.add('show');    
+        cart.sync();
+        cart.open();
     },
     removeItem : function(e) {
-        console.log(e.target.dataset.id);
         cart.items.splice(e.target.dataset.id,1)
-        localStorage.setItem('cartItems',JSON.stringify(cart.items));
-        cart.paint(cart.items);
+        cart.sync();
     },
     clear : function(){
         cart.items.splice(0,cart.items.length);
+        cart.sync();
+    },
+    sync : function(){
         localStorage.setItem('cartItems',JSON.stringify(cart.items));
         cart.paint(cart.items);
     }
