@@ -1,12 +1,12 @@
 <section id="cart">
     <div>
     <h3>Cart</h3>
-    <a href="#" id="close">Close</a>
+    <a href="#" class="cart-btn" data-action="toggle">Close</a>
     </div>
 <ul id="cartList"></ul>
     
-<button class="primary-btn" id="checkout">Checkout</button>
-<button class="btn" id="emptyCart">Clear Cart</button>
+<button class="primary-btn cart-btn" data-action="checkout" >Checkout</button>
+<button class="btn cart-btn" data-action="clear">Clear Cart</button>
 </section>
 
 <script src="{{'/assets/js/cart.js' | asset_url}}"></script>
