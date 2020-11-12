@@ -1,7 +1,7 @@
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
 title: "Ecom Shell" # the name of your site, e.g. ACME Corp.
-nav: [{"href":"/shop","text":"shop"},{"href":"/about","text":"about"},{"href":"#","text":"cart"}]
+nav: [{"href":"/shop","text":"shop","class":""},{"href":"/about","text":"about","class":""}]
 
 plugins:
   - jekyll-datapage-generator

@@ -1,12 +1,12 @@
 <nav class="container">
     <ul>
-        <li class="logo"><a href=
-            "/"><img src="logo.png"></a></li>
+        <li class="logo"><a href="/"><img src="logo.png"></a></li>
         {% for item in site.nav %}
             <li>
                 <a href="{{item.href}}">{{item.text}}
                 </a>
             </li>
         {% endfor %}
+        <li><a href="#" class="cart-btn" data-action="toggle">cart</a></li>
     </ul>
 </nav>
