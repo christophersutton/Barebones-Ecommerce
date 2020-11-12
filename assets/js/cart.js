@@ -1,61 +1,68 @@
-
-
 const cart = {
-    html : document.querySelector("#cart"),
-    items : JSON.parse(localStorage.getItem('orderItems')) || [],
-    itemsHTML : document.querySelector('#orderItems'),
-    btns : document.querySelectorAll('.cart-btn'),
-    displayCart : false,
+    html: document.querySelector("#cart"),
+    items: JSON.parse(localStorage.getItem('orderItems')) || [],
+    itemsHTML: document.querySelector('#orderItems'),
+    btns: document.querySelectorAll('.cart-btn'),
+    displayCart: false,
 
-    handler : function(e) {
-        cart[e.target.dataset.action](e);
+    handler: function (e) {
+        return cart[e.target.dataset.action](e);
     },
-    toggle : function() {
-        if (cart.html.classList.contains('show')) {
-            cart.html.classList.remove('show');
+    toggle: function () {
+        let overlay = document.querySelector('.overlay');
+        if (this.html.classList.contains('show')) {
+            this.html.classList.remove('show');
+            overlay.setAttribute("style","display:none !important")
             displayCart = false
-          }
-        else {
-            cart.html.classList.add('show');
+        } else {
+            this.html.classList.add('show');
+            overlay.setAttribute("style","display:inline !important")
             displayCart = true;
         }
     },
-    paint : function(items) {  
-        cart.itemsHTML.innerHTML = items.map((item, i) => {
+    paint: function (items) {
+        this.itemsHTML.innerHTML = items.map((item, i) => {
             return `<div>
                         ${item.item}
-                        <a href="#" class="deleteItem" data-id="${i}">Delete</a>
-                    </div>`;}
-            ).join('');
-        const removeItemBtns = document.querySelectorAll('.deleteItem');
-        removeItemBtns.forEach(b=>b.addEventListener('click',cart.removeItem));
+                        <a href="#" data-action="removeItem" data-id="${i}">Delete</a>
+                    </div>`;
+        }).join('');
+        const removeItemBtns = document.querySelectorAll("[data-action='removeItem']");
+        removeItemBtns.forEach(b => b.addEventListener('click', this.handler));
     },
-    addItem : function(e) {
+    addItem: function (e) {
         let item = {
-            item : e.target.dataset.item,
-            qty : 1,
-            price : e.target.dataset.price
+            item: e.target.dataset.item,
+            qty: 1,
+            price: e.target.dataset.price
         };
-        cart.items.push(item);
-        cart.sync();
-        !cart.displayCart && cart.toggle();
+        this.items.push(item);
+        this.sync();
+        !this.displayCart && this.toggle();
     },
-    removeItem : function(e) {
-        cart.items.splice(e.target.dataset.id,1)
-        cart.sync();
-    },  
-    clear : function() {
-        cart.items.splice(0,cart.items.length)
-        cart.sync();  
+    removeItem: function (e) {
+        console.log(this);
+        this.items.splice(e.target.dataset.id, 1)
+        this.sync();
     },
-    sync : function() {
-        localStorage.setItem('orderItems',JSON.stringify(cart.items));
-        cart.paint(cart.items);
+    clear: function () {
+        this.items.splice(0, this.items.length)
+        this.sync();
     },
-    checkout : function() {
-        alert(cart.items);
+    sync: function () {
+        localStorage.setItem('orderItems', JSON.stringify(this.items));
+        this.paint(this.items);
+    },
+    checkout: function () {
+        alert(this.items);
     }
 }
 
+function test(){
+    console.log('hmmmmm')
+}
+
 cart.paint(cart.items);
-cart.btns.forEach(btn => btn.addEventListener("click",cart.handler));
+
+document.querySelector('.overlay').addEventListener("click",cart.handler);
+cart.btns.forEach(btn => btn.addEventListener("click", cart.handler));
