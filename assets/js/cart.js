@@ -3,20 +3,20 @@ const cart = {
     items: JSON.parse(localStorage.getItem('orderItems')) || [],
     itemsHTML: document.querySelector('#orderItems'),
     btns: document.querySelectorAll('.cart-btn'),
+    overlay : document.querySelector('.overlay'),
     displayCart: false,
 
     handler: function (e) {
         return cart[e.target.dataset.action](e);
     },
     toggle: function () {
-        let overlay = document.querySelector('.overlay');
         if (this.html.classList.contains('show')) {
             this.html.classList.remove('show');
-            overlay.setAttribute("style","display:none !important")
+            this.overlay.setAttribute("style","display:none !important")
             displayCart = false
         } else {
             this.html.classList.add('show');
-            overlay.setAttribute("style","display:inline !important")
+            this.overlay.setAttribute("style","display:block !important")
             displayCart = true;
         }
     },
@@ -58,11 +58,5 @@ const cart = {
     }
 }
 
-function test(){
-    console.log('hmmmmm')
-}
-
 cart.paint(cart.items);
-
-document.querySelector('.overlay').addEventListener("click",cart.handler);
 cart.btns.forEach(btn => btn.addEventListener("click", cart.handler));
