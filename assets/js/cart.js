@@ -41,7 +41,6 @@ const cart = {
         !this.displayCart && this.toggle();
     },
     removeItem: function (e) {
-        console.log(this);
         this.items.splice(e.target.dataset.id, 1)
         this.sync();
     },
@@ -54,7 +53,7 @@ const cart = {
         this.paint(this.items);
     },
     checkout: function () {
-        alert(this.items);
+        alert('TODO');
     }
 }
 
