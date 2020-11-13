@@ -58,7 +58,7 @@ const cart = {
         /* build the order total */
         let orderTotalHTML = `<section>$${this.total().toFixed(2)}</section>`
         /* paint the html */
-        this.itemsHTML.innerHTML = orderItemsHTML + orderItemsHTML;
+        this.itemsHTML.innerHTML = orderItemsHTML + orderTotalHTML;
         /* set up event listeners on order item modifiers */
         const removeItemBtns = document.querySelectorAll("[data-action='removeItem']");
         removeItemBtns.forEach(b => b.addEventListener('click', this.handler));
