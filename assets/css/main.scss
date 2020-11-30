@@ -66,3 +66,7 @@ nav ul {
     backdrop-filter: blur(1px);
     transition: 100ms;
 }
+
+.overlay.show{
+    display:block;
+}

@@ -17,7 +17,7 @@ class OrderItem {
 }
 
 const cart = {
-    html: document.querySelector("#cart"),
+    cartHTML: document.querySelector("#cart"),
     itemsHTML: document.querySelector('#orderItems'),
     btns: document.querySelectorAll('.cart-btn'),
     overlay: document.querySelector('.overlay'),
@@ -33,15 +33,9 @@ const cart = {
 
     /* toggle the display of the cart */
     toggle: function () {
-        if (this.html.classList.contains('show')) {
-            this.html.classList.remove('show');
-            this.overlay.setAttribute("style", "display:none !important")
-            displayCart = false
-        } else {
-            this.html.classList.add('show');
-            this.overlay.setAttribute("style", "display:block !important")
-            displayCart = true;
-        }
+        this.cartHTML.classList.toggle('show');
+        this.overlay.classList.toggle('show');
+        displayCart = !displayCart;
     },
 
     /* paint HTML of order items */
@@ -78,6 +72,7 @@ const cart = {
             this.items.push(item);
         }
         this.sync();
+        // toggle cart on if not already shown. 
         !this.displayCart && this.toggle();
     },
 
